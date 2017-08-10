@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>我画</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <canvas width="600" height="600" id="cvs"></canvas>
+    <button id="clear-all">清空画布</button>
+    <button id="clear">橡皮擦</button>
+    <script src="/javascripts/index.js"></script>
+    <script>
+      window.onload = function(){
+        /**************画布id  清除画布id   橡皮擦id*****/
+        new DrawElement('cvs','clear-all','clear').init();
+
+        
+      };
+    </script>
+  </body>
+</html>

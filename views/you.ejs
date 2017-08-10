@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>你猜</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <canvas width="600" height="600" id="cvs"></canvas>
+    <script src="/javascripts/index.js"></script>
+    <script>
+      window.onload = function(){
+        var draw = new Draw(document.getElementById('cvs'),true);
+        new Socket(function(evt){
+          let data = JSON.parse(evt.data);
+          switch(data.type){
+            case 'drawBegin':
+              draw.drawBegin(data.x,data.y);
+            break;
+            case 'draw':
+              draw.drawMiddle(data.x,data.y);
+            break;
+            case 'drawEnd':
+              draw.drawEnd();
+            break;
+            case 'clear':
+              draw.clear(data.x,data.y);
+            break;
+            case 'clearAll':
+              draw.clearAll();
+            break;
+            default:
+            break;
+          }
+        }).init();
+      }
+    </script>
+  </body>
+</html>
